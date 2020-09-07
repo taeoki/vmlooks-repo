@@ -17,6 +17,7 @@ import org.ovirt.engine.sdk4.types.Vm;
 import org.ovirt.engine.sdk4.services.NetworksService;
 import org.ovirt.engine.sdk4.types.NetworkUsage;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -46,11 +47,15 @@ public class OlvmController {
 	
 	public void connect()
     {
+		File file = new File("");
+		String path = file.getAbsolutePath();
+		path = path+"/pki/ovlm.truststore";
+		
               connection = connection()
             		  .url("https://localhost.localdomain/ovirt-engine/api")
                       .user("admin@internal")
                       .password("qweasd")
-                      .trustStoreFile("/Users/tae.ok/Desktop/Pstore/.truststore")
+                      .trustStoreFile(path)
                       .trustStorePassword("mypass")
                       .build();
     }
