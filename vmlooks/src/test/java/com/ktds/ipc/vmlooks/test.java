@@ -6,7 +6,7 @@ import controller.OlvmController;
 import module.Module;
 
 public class test extends Module {
-	//@Test
+	@Test
 	public void s01_tt()
 	{
 		OlvmController olvmCtrl = new OlvmController();
