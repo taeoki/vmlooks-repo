@@ -6,6 +6,11 @@ import module.Module;
 
 public class test extends Module {
 	
+	public void s01_tt()
+	{
+		addNetwork();
+	}
+	
 	//@Test
 	public void s00_changeLineInFile()
 	{
@@ -96,7 +101,7 @@ public class test extends Module {
 		inputMsg("df -h | grep /dev/sdc1 | awk {print $5}");
 	}
 	
-	@Test
+	//@Test
 	public void inputCommand()
 	{
 		inputCommand("dmesg | grep docker");

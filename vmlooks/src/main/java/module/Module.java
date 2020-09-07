@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import controller.Command;
+import controller.ExcelController;
+import controller.OlvmController;
 import controller.ResultController;
 import controller.StringController;
 import controller.WebController;
@@ -15,6 +17,8 @@ import setup.Setup;
 public class Module extends Setup {
 	
 	static Command cmd;
+	OlvmController olvmCtlr;
+	ExcelController excelCtlr;
 	
 	//static StringController resultAnalysis;
 	
@@ -22,9 +26,17 @@ public class Module extends Setup {
 	
 	public Module()
 	{
+		olvmCtlr = new OlvmController();
+		excelCtlr = new ExcelController();
+		
 		cmd = new Command();
 		VMList = new HashMap<String, HostVM>();
 		//resultAnalysis = new StringController(VMList);
+	}
+	
+	public void addNetwork()
+	{
+		olvmCtlr.addNetwork();
 	}
 	
 	

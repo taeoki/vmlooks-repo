@@ -3,13 +3,21 @@ package controller;
 import static org.ovirt.engine.sdk4.ConnectionBuilder.connection;
 import static org.ovirt.engine.sdk4.builders.Builders.cluster;
 import static org.ovirt.engine.sdk4.builders.Builders.host;
+import static org.ovirt.engine.sdk4.builders.Builders.network;
+import static org.ovirt.engine.sdk4.builders.Builders.vlan;
+import static org.ovirt.engine.sdk4.builders.Builders.dataCenter;
 
 import org.ovirt.engine.sdk4.Connection;
+import org.ovirt.engine.sdk4.services.NetworksService;
+import org.ovirt.engine.sdk4.services.ClusterService;
 import org.ovirt.engine.sdk4.services.HostsService;
 import org.ovirt.engine.sdk4.services.VmsService;
 import org.ovirt.engine.sdk4.types.Host;
 import org.ovirt.engine.sdk4.types.Vm;
+import org.ovirt.engine.sdk4.services.NetworksService;
+import org.ovirt.engine.sdk4.types.NetworkUsage;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class OlvmController {
@@ -18,7 +26,7 @@ public class OlvmController {
 	
 	public OlvmController()
 	{
-		connection();
+		connect();
 	}
 	
 	public List<Vm> getAllVmList()
@@ -47,6 +55,29 @@ public class OlvmController {
                       .build();
     }
 
+	public void addNetwork()
+	{
+		NetworksService networksService = connection.systemService().networksService();
+		
+		networksService.add()
+        .network(
+            network()
+            .name("mynetwork")
+            .description("My logical network")
+            .dataCenter(
+                dataCenter()
+                .name("apiDataCenter")
+            )
+            .vlan(
+                vlan()
+                .id(100)
+            )
+            .usages(Arrays.asList(NetworkUsage.DISPLAY))
+            .mtu(1500)
+        )
+        .send();
+		
+	}
    
     public void disconnection()
     {
