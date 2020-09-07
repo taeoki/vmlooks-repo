@@ -2,13 +2,15 @@ package com.ktds.ipc.vmlooks;
 
 import org.testng.annotations.Test;
 
+import controller.OlvmController;
 import module.Module;
 
 public class test extends Module {
 	//@Test
 	public void s01_tt()
 	{
-		addNetwork();
+		OlvmController olvmCtrl = new OlvmController();
+		olvmCtrl.addNetwork();
 	}
 	
 	//@Test
