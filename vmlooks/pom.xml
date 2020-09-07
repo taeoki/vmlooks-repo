@@ -72,6 +72,9 @@
               <version>2.19.1</version>
               <configuration>
               	<includes>${testFileName}</includes>
+              	<systemPropertyVariables>
+              		<testVar1>hitaeok</testVar1>
+              	</systemPropertyVariables>
               </configuration>
           </plugin>
           
