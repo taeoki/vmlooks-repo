@@ -1,0 +1,13 @@
+--- 
+- hosts: all
+  gather_facts: no
+
+
+  tasks: 
+  - name: install package
+    yum: 
+      name: /home/hicolor-icon-theme-0.12-7.el7.noarch.rpm
+      state: present
+    register: result_install
+  - debug:
+          msg: "{{ result_install.results }}"

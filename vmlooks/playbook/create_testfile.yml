@@ -1,0 +1,15 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  
+  - name: add value testfile
+    lineinfile:
+      path: /tmp/testfile
+      line: 192.168.1.99 foo.lab.net foo
+      create: yes
+      
+  - name: delete value testfile
+    lineinfile:
+      path:

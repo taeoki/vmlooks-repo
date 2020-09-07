@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: ssh-copy-id to node
+    connection: local
+    command: "sshpass -p '{{passwd}}' ssh-copy-id -i {{pub_path}} -o StrictHostKeyChecking=no {{user_hostname}}"
+    register: result
+    
+  - debug:
+      msg: "startFile{{result.stdout_lines}}endFile"  

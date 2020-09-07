@@ -1,0 +1,23 @@
+[test]
+cloudbot2	ansible_host=10.9.168.241  
+cloudbot3	ansible_host=10.9.168.242
+
+[test:vars]
+ansible_user=root
+ansible_password=oracle!kt
+#[gcp]
+#34.69.212.162
+
+#[azure]
+#52.231.202.21	
+#52.231.187.210	
+
+#[gcp:vars]
+#ansible_user=root
+#ansible_password=rhrnakrkawk!23
+
+#[azure:vars]
+#ansible_user=taeok
+#ansible_password=rhrnakrkawk!23
+
+

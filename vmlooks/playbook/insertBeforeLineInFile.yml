@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks: 
+  - name: insert line in before
+    lineinfile:
+      path: "{{path}}"
+      regexp: "{{regexp}}"
+      line: |
+             {{line}}
+             {{regexp}}
+  - name: PRINT
+    command: "cat {{path}}"
+    register: result
+    
+  - debug: 
+      msg: "{{result.stdout_lines}}"             
+             

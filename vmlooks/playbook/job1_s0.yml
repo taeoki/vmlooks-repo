@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: Creates directory
+    file:
+      path: "{{path}}"
+      state: directory
+    register: result
+    
+  - debug: 
+      msg: "{{ result }}"    

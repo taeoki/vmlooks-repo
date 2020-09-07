@@ -1,0 +1,11 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: ensure a package installed
+    yum:
+      name: hicolor-icon-theme-0.12-7.el7.noarch
+    register: result_ensure
+  - debug:
+          msg: "{{ result_ensure.results }}"

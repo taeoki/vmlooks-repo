@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: yes
+  
+  tasks:
+  - name: INPUTCOMMAND
+    shell: "{{command}}"
+    register: result
+    ignore_errors: True
+  
+  - debug:
+      msg: "startFile [{{ansible_hostname}}]:\n{{result.stdout_lines}}endFile"
+    when: result.stdout != ""
+   
+  - debug:
+      msg: "startFileno outputendFile"
+    when: result.stdout == ""  
+ 

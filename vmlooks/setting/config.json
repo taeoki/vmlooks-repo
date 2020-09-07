@@ -1,0 +1,14 @@
+{
+	"Username":"imadmin",
+	"Password":"test1234",
+	"TargetFolder":["/home/test/logs","/home/test/logs_2"],
+	"BackupFolder":"/home/test/backup",
+	"Timeout":300,
+	"Service":["crond","firewalld"],
+	"Trigger":["kennel error"],
+	"DiskUsageLimit":70,
+	"CpuUsageLimit":70,
+	"MemoryUsageLimit":70,
+	"Web":["www.kt.com", "ex.)ILO_PAGE, VDI Web potal"]
+	
+}

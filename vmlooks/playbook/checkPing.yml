@@ -1,0 +1,12 @@
+---
+- hosts:
+    - all
+#  gather_facts: no
+  tasks:
+    - action: ping
+  tasks:
+    - name: CHECK_PING     
+      debug:
+        msg:
+         - "startFile{{ ansible_distribution}}_{{ ansible_distribution_major_version }}endFile"
+

@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: delete juseok
+    lineinfile:
+      path: "{{path}}"
+      regexp: "{{regexp}}"
+      line: "{{line}}"
+      
+  - name: PRINT
+    command: "cat {{path}}"
+    register: result
+    
+  - debug: 
+      msg: "startFile{{result.stdout_lines}}endFile"  

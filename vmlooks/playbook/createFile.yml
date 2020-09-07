@@ -1,0 +1,10 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: create file
+    file:
+      path: "{{path}}"
+      state: touch
+          

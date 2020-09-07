@@ -1,0 +1,23 @@
+---
+- hosts: all
+  gather_facts: no    
+
+  tasks:
+  - name: Change SELINUX option
+    lineinfile:
+      path: /etc/selinux/config
+      regexp: '^SELINUX='
+      line: SELINUX= {{SELINUX}}
+  
+  - name: Change SELINUXTYPE option
+    lineinfile:
+      path: /etc/selinux/config
+      regexp: '^SELINUXTYPE='
+      line: SELINUXTYPE= {{SELINUXTYPE}}
+ 
+  - name: Print SELINUX
+    shell: cat /etc/selinux/config
+    register: result
+
+  - debug:
+      msg: "startFile{{result.stdout}}endFile"

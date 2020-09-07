@@ -1,0 +1,20 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: ssh-keygen
+    connection: local
+    command: "ssh-keygen -b 2048 -t rsa -f {{path}} -q -N ''"
+    ignore_errors: yes
+    run_once: true
+  
+  - name: Print(*.pub key)
+    connection: local
+    command: "cat {{path}}.pub"
+    register: result
+    run_once: true
+ 
+    
+  - debug: 
+      msg: "startFile{{result.stdout}}endFile"   

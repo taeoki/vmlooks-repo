@@ -1,0 +1,24 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: TOTAL_DISK
+    shell: df -P|grep -v ^Filesystem|awk '{sum += $2} END { print sum;}'
+    register: total_disk
+
+  
+  - name: USED_DISK
+    shell: df -P | grep -v ^Filesystem | awk '{sum += $3} END { print sum; }'
+    register: used_disk
+
+  - debug:
+      msg: "startFileDiskUsage {{(used_disk.stdout|float|abs)/(total_disk.stdout|float|abs)*100}}endFile"   
+
+#  - debug:
+#      msg: up 70 
+#    when: ((used_disk.stdout|float|abs)/(total_disk.stdout|float|abs)*100) > 70 
+
+#  - debug:
+#      msg: under 70
+#    when: ((used_disk.stdout|float|abs)/(total_disk.stdout|float|abs)*100) < 70

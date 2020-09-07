@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+          - name: change mtu value
+            command: ip link set {{interface}} mtu {{number}}
+
+          - name: print mtu
+            command: netstat -i | grep {{interface}} | awk '{print $2}'
+            register: result
+
+          - debug:
+                  msg: "{{ result }}" 

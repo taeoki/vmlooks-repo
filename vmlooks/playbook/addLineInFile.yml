@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: Add a line to a file if the file does not exist
+    lineinfile:
+      path: "{{path}}"
+      line: "{{line}}"
+      create: yes 
+      
+  - name: PRINT
+    command: "cat {{path}}"
+    register: result
+    
+  - debug:
+      msg: "startFile{{result.stdout_lines}}endFile"      

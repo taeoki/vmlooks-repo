@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: no
+                                                                          
+  tasks:
+  - name: Copy file to node dir
+    copy:
+      src: /test/hicolor-icon-theme-0.12-7.el7.noarch.rpm
+      dest: /test/hicolor-icon-theme-0.12-7.el7.noarch.rpm
+    register: result
+  - debug:
+      msg: "{{ result }}"    

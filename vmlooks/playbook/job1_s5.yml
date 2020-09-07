@@ -1,0 +1,14 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: add config value in testfile
+    lineinfile:
+      path: /tmp/testfile
+      line: 0.0.0.0 ktds.com ktds
+      create: yes
+    register: result
+    
+  - debug:
+      msg: "{{result}}"    

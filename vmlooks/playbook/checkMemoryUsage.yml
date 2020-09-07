@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: CHECKMEMORYUSAGE
+    #shell: free | grep ^Mem | awk '{print $2}'
+    shell: cat /proc/meminfo | grep MemTotal | awk '{print $2}'
+    register: total
+ 
+  - name: CHECKMEMORYUSAGE
+    #shell: free | grep ^Mem | awk '{print $3}'
+    shell: cat /proc/meminfo | grep MemFree | awk '{print $2}'
+    register: free
+
+  - debug:
+      #msg: "{{ (((total.stdout|float|abs)-(used.stdout|float|abs))/(total.stdout|float|abs)*100 |int|abs)  }}"
+      msg: "MemoryUsage {{ ((total.stdout|int|abs)-(free.stdout|int|abs))/(total.stdout|int|abs)*100 }}"

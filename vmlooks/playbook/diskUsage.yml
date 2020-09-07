@@ -1,0 +1,20 @@
+---
+- hosts: all
+  gather_facts: no
+  
+  tasks:
+  - name: TOTAL_DISK
+    shell: df -P|grep -v ^Filesystem|awk '{sum += $2} END { print sum;}'
+    register: total_disk
+#    ignore_errors: True
+  
+  - name: USED_DISK
+    shell: df -P | grep -v ^Filesystem | awk '{sum += $3} END { print sum; }'
+    register: used_disk
+  - debug:
+     msg: "DISK_USAGE(used/total) {{used_disk.stdout|int - }} {{total_disk.stdout}}"
+     
+#  - copy:
+#     content: "{{ total.stdout }}"
+#     dest: /tmp/text.log
+

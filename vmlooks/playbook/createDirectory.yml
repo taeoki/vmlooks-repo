@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: no
+
+  tasks:
+  - name: create dir
+    file:
+      path: "{{path}}"
+      state: directory
