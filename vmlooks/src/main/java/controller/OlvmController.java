@@ -62,7 +62,7 @@ public class OlvmController {
 		networksService.add()
         .network(
             network()
-            .name("mynetwork")
+            .name("mynetwork22222")
             .description("My logical network")
             .dataCenter(
                 dataCenter()
