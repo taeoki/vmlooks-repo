@@ -6,7 +6,7 @@ import controller.OlvmController;
 import module.Module;
 
 public class test extends Module {
-	//@Test
+	@Test
 	public void s01_tt()
 	{
 		OlvmController olvmCtrl = new OlvmController();
@@ -103,7 +103,7 @@ public class test extends Module {
 		inputMsg("df -h | grep /dev/sdc1 | awk {print $5}");
 	}
 	
-	@Test
+	//@Test
 	public void inputCommand()
 	{
 		inputCommand("dmesg | grep docker");
